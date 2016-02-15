@@ -11,9 +11,6 @@ app.service('beerSvc', function($http) {
 
   this.getRandomBeer = function() {
     return $http.get('/beer')
-    .then(function(beer) {
-      console.log(beer);
-    })
   }
 
 });

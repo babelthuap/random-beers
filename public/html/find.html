@@ -3,5 +3,12 @@
   <hr>
   <button class="btn btn-success" ng-click="getRandomBeer()">Random Beer!</button>
   <hr>
-  {{beer}}
+  <div ng-show="beer">
+    <h3>Name:</h3>
+    <p>{{beer.nameDisplay}}</p>
+    <h3>Description:</h3>
+    <p>{{beer.description}}</p>
+    <button class="btn btn-lg">Have Sampled</button>&nbsp;
+    <button class="btn btn-lg">Have Not Sampled</button>
+  </div>
 </div>

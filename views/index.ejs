@@ -19,6 +19,7 @@
     <script src='/js/userSvc.js'></script>
     <script src='/js/controllers/navCtrl.js'></script>
     <script src='/js/controllers/homeCtrl.js'></script>
+    <script src='/js/controllers/findCtrl.js'></script>
 
   </head>
   <body ng-app='App'>
@@ -37,7 +38,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li ng-show="loggedIn()"><a ui-sref="home">Find Random Beers</a></li>
+            <li ng-show="loggedIn()"><a ui-sref="find">Find Random Beers</a></li>
             <li ng-show="loggedIn()"><a ui-sref="home">Unsampled</a></li>
             <li ng-show="loggedIn()"><a ui-sref="home">Sampled</a></li>
           </ul>

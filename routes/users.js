@@ -12,4 +12,11 @@ router.post('/register', function(req, res) {
   });
 });
 
+router.post('/login', function(req, res) {
+  User.login(req.body, (err, token) => {
+    if (err) return res.status(400).send(err);
+    res.send(token);
+  });
+});
+
 module.exports = router;

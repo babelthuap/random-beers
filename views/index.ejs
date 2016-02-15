@@ -37,12 +37,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a ui-sref="home">Find Random Beers</a></li>
-            <li><a ui-sref="home">Unsampled</a></li>
-            <li><a ui-sref="home">Sampled</a></li>
+            <li ng-show="loggedIn()"><a ui-sref="home">Find Random Beers</a></li>
+            <li ng-show="loggedIn()"><a ui-sref="home">Unsampled</a></li>
+            <li ng-show="loggedIn()"><a ui-sref="home">Sampled</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li ng-show="loggedIn"><a href="">Log Out</a></li>
+            <li ng-show="loggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
           </ul>
         </div>
       </div>

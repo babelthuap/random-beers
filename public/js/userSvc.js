@@ -2,17 +2,25 @@
 
 var app = angular.module('App');
 
-app.service('userSvc', function($http, $scope, $localStorage) {
+app.service('userSvc', function($http) {
 
   this.register = function(username, password) {
-    $scope.$storage = $localStorage;
-
     return $http.post('/users/register', {
       username: username,
       password: password,
     })
     .then(function(resp) {
-      $scope.$storage.token = resp.data;
+      localStorage.setItem("token", resp.data);
+    })
+  }
+
+  this.login = function(username, password) {
+    return $http.post('/users/login', {
+      username: username,
+      password: password,
+    })
+    .then(function(resp) {
+      localStorage.setItem("token", resp.data);
     })
   }
 

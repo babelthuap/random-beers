@@ -33,7 +33,7 @@ userSchema.statics.register = function(user, cb) {
   });
 };
 
-userSchema.statics.authenticate = function(inputUser, cb){
+userSchema.statics.login = function(inputUser, cb){
   User.findOne({username: inputUser.username}, function(err, dbUser) {
     if(err || !dbUser) return cb(err || 'Incorrect username or password.');
     bcrypt.compare(inputUser.password, dbUser.password, function(err, isGood){

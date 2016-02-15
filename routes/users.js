@@ -20,7 +20,12 @@ router.post('/login', function(req, res) {
 });
 
 router.post('/addsampled', User.isAuthenticated, function(req, res) {
-  res.send(req.user);
+  User.findByIdAndUpdate(req.user._id, {
+    $addToSet: { sampled: req.body.beer }
+  }, (err, user) => {
+    if (err) return res.status(400).send(err);
+    res.send('added');
+  })
 });
 
 module.exports = router;

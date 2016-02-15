@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var jwt = require('jwt-simple');
 var moment = require('moment');
 var JWT_SECRET = process.env.JWT_SECRET;
@@ -9,24 +9,24 @@ var JWT_SECRET = process.env.JWT_SECRET;
 var User;
 
 var userSchema = mongoose.Schema({
-  email: { type: String, required: true },
+  username: { type: String, required: true },
   password: { type: String, required: true }
 });
 
 userSchema.statics.register = function(user, cb) {
-  var email = user.email;
+  var username = user.username;
   var password = user.password;
-  User.findOne({email: email}, function(err, user){
-    if(err || user) return cb(err || 'Email already taken.');
+  User.findOne({username: username}, function(err, user){
+    if(err || user) return cb(err || 'Username already taken.');
     bcrypt.genSalt(13, function(err1, salt) {
       bcrypt.hash(password, salt, function(err2, hash) {
         if(err1 || err2) return cb(err1 || err2);
         var newUser = new User();
-        newUser.email = email;
+        newUser.username = username;
         newUser.password = hash;
         newUser.save(function(err, savedUser){
           savedUser.password = null;
-          cb(err, savedUser);
+          cb(err, savedUser.token());
         });
       });
     });
@@ -34,12 +34,12 @@ userSchema.statics.register = function(user, cb) {
 };
 
 userSchema.statics.authenticate = function(inputUser, cb){
-  User.findOne({email: inputUser.email}, function(err, dbUser) {
-    if(err || !dbUser) return cb(err || 'Incorrect email or password.');
+  User.findOne({username: inputUser.username}, function(err, dbUser) {
+    if(err || !dbUser) return cb(err || 'Incorrect username or password.');
     bcrypt.compare(inputUser.password, dbUser.password, function(err, isGood){
-      if(err || !isGood) return cb(err || 'Incorrect email or password.');
+      if(err || !isGood) return cb(err || 'Incorrect username or password.');
       dbUser.password = null;
-      cb(null, dbUser);
+      cb(null, dbUser.token());
     });
   });
 };
@@ -47,9 +47,9 @@ userSchema.statics.authenticate = function(inputUser, cb){
 // Generate JWT token for a user
 userSchema.methods.token = function() {
   var payload = {
-    email: this.email,
+    username: this.username,
     _id: this._id,
-    exp: Moment().add(1, 'day').unix()
+    exp: moment().add(1, 'day').unix()
   };
   var token = jwt.encode(payload, JWT_SECRET);
   return token;

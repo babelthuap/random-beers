@@ -4,6 +4,10 @@ var app = angular.module('App');
 
 app.controller('homeCtrl', function($scope, $state, userSvc) {
 
+  if (localStorage.getItem("token")) {
+    $state.go('find');
+  }
+
   $scope.register = function() {
     userSvc.register($scope.registerUsername, $scope.registerPassword)
     .then(function() {

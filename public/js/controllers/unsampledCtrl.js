@@ -4,15 +4,10 @@ var app = angular.module('App');
 
 app.controller('unsampledCtrl', function($state, $scope, beerSvc) {
 
-  $scope.beer = null;
-
-  $scope.getRandomBeer = function() {
-    console.log('get')
-    beerSvc.getRandomBeer()
-    .then(function(resp) {
-      console.log(resp)
-      $scope.beer = resp.data;
-    })
+  if (!localStorage.getItem("token")) {
+    $state.go('home');
   }
+
+  $scope.beers = null;
 
 });

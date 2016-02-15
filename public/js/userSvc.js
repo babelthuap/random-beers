@@ -24,4 +24,11 @@ app.service('userSvc', function($http) {
     })
   }
 
+  this.addSampled = function(name) {
+    $http.post('/users/addsampled')
+    .then(function(data) {
+      console.log(data)
+    })
+  }
+
 });

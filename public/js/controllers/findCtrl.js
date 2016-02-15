@@ -2,7 +2,11 @@
 
 var app = angular.module('App');
 
-app.controller('findCtrl', function($state, $scope, beerSvc) {
+app.controller('findCtrl', function($state, $scope, beerSvc, userSvc) {
+  
+  if (!localStorage.getItem("token")) {
+    $state.go('home');
+  }
 
   $scope.beer = null;
 
@@ -16,7 +20,7 @@ app.controller('findCtrl', function($state, $scope, beerSvc) {
   }
 
   $scope.addSampled = function() {
-    
+    userSvc.addSampled(beer.nameDisplay)
   }
 
 });

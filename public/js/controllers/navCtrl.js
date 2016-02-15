@@ -12,4 +12,13 @@ app.controller('navCtrl', function($scope, $state) {
     $state.go('home');
   }
 
+  $scope.getUsername = function() {
+    var token = localStorage.getItem("token");
+    if (token) {
+      return JSON.parse(atob(token.split('.')[1])).username;
+    } else {
+      return '';
+    }
+  }
+
 });

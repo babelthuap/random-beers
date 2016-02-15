@@ -43,8 +43,9 @@
             <li ng-show="loggedIn()"><a ui-sref="unsampled">Unsampled</a></li>
             <li ng-show="loggedIn()"><a ui-sref="sampled">Sampled</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li ng-show="loggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
+          <ul class="nav navbar-nav navbar-right" ng-show="loggedIn()">
+            <li><a>Hello, {{getUsername()}}</a></li>
+            <li><a href="" ng-click="logOut()">Log Out</a></li>
           </ul>
         </div>
       </div>

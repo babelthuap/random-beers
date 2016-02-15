@@ -10,12 +10,15 @@
     <script src='/bower_components/jquery/dist/jquery.min.js'></script>
     <script src='/bower_components/angular/angular.js'></script>
     <script src='/bower_components/angular-ui-router/release/angular-ui-router.js'></script>
+    <script src='/bower_components/ngstorage/ngStorage.min.js'></script>
     <script src='/bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
 
     <script src='/js/module.js'></script>
     <script src='/js/config.js'></script>
     <script src='/js/beerSvc.js'></script>
+    <script src='/js/userSvc.js'></script>
     <script src='/js/controllers/navCtrl.js'></script>
+    <script src='/js/controllers/homeCtrl.js'></script>
 
   </head>
   <body ng-app='App'>
@@ -39,7 +42,7 @@
             <li><a ui-sref="home">Sampled</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li ng-hide="loggedIn"><a href="">Log Out</a></li>
+            <li ng-show="loggedIn"><a href="">Log Out</a></li>
           </ul>
         </div>
       </div>

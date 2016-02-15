@@ -7,7 +7,7 @@
     <h3>Name:</h3>
     <p>{{beer.nameDisplay}}</p>
     <h3>Description:</h3>
-    <p>{{beer.description}}</p>
+    <p>{{beer.description || '- - -'}}</p>
     <button class="btn btn-lg btn-primary" ng-click="addSampled()">Have Sampled</button>&nbsp;
     <button class="btn btn-lg btn-danger">Have Not Sampled</button>
   </div>

@@ -20,7 +20,7 @@ app.controller('findCtrl', function($state, $scope, beerSvc, userSvc) {
   }
 
   $scope.addSampled = function() {
-    userSvc.addSampled(beer.nameDisplay)
+    userSvc.addSampled($scope.beer.nameDisplay)
   }
 
 });

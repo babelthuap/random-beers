@@ -10,7 +10,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/testapp';
+var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/randombeers';
 
 mongoose.connect(mongoUrl, function(err){
   if(err) return console.error(`Error connecting to Mongodb: ${err}`);

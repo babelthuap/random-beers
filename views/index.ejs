@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Test App</title>
+    <title>Random Beers!</title>
 
     <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css'/>
     <link rel='stylesheet' href='/css/style.css'/>
@@ -16,10 +16,10 @@
     <script src='/js/controllers/navCtrl.js'></script>
 
   </head>
-  <body ng-app='testApp'>
+  <body ng-app='App'>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-default" ng-controller='navbarCtrl'>
+    <nav class="navbar navbar-default" ng-controller='navCtrl'>
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -28,14 +28,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" ui-sref="home">Test App</a>
+          <a class="navbar-brand" href="">Random Beers!</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a ui-sref="home">Home</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-
+            <li ng-hide="loggedIn"><a href="">Log Out</a></li>
           </ul>
         </div>
       </div>

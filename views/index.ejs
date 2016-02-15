@@ -10,7 +10,6 @@
     <script src='/bower_components/jquery/dist/jquery.min.js'></script>
     <script src='/bower_components/angular/angular.js'></script>
     <script src='/bower_components/angular-ui-router/release/angular-ui-router.js'></script>
-    <script src='/bower_components/ngstorage/ngStorage.min.js'></script>
     <script src='/bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
 
     <script src='/js/module.js'></script>
@@ -20,6 +19,8 @@
     <script src='/js/controllers/navCtrl.js'></script>
     <script src='/js/controllers/homeCtrl.js'></script>
     <script src='/js/controllers/findCtrl.js'></script>
+    <script src='/js/controllers/sampledCtrl.js'></script>
+    <script src='/js/controllers/unsampledCtrl.js'></script>
 
   </head>
   <body ng-app='App'>
@@ -39,8 +40,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li ng-show="loggedIn()"><a ui-sref="find">Find Random Beers</a></li>
-            <li ng-show="loggedIn()"><a ui-sref="home">Unsampled</a></li>
-            <li ng-show="loggedIn()"><a ui-sref="home">Sampled</a></li>
+            <li ng-show="loggedIn()"><a ui-sref="unsampled">Unsampled</a></li>
+            <li ng-show="loggedIn()"><a ui-sref="sampled">Sampled</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li ng-show="loggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>

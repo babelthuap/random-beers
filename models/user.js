@@ -10,7 +10,9 @@ var User;
 
 var userSchema = mongoose.Schema({
   username: { type: String, required: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  unsampled: [{ type: String }],
+  sampled: [{ type: String }]
 });
 
 userSchema.statics.register = function(user, cb) {

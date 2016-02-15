@@ -2,7 +2,7 @@
 
 var app = angular.module('App');
 
-app.controller('findCtrl', function($state, $scope, beerSvc) {
+app.controller('unsampledCtrl', function($state, $scope, beerSvc) {
 
   $scope.beer = null;
 
@@ -13,10 +13,6 @@ app.controller('findCtrl', function($state, $scope, beerSvc) {
       console.log(resp)
       $scope.beer = resp.data;
     })
-  }
-
-  $scope.addSampled = function() {
-    
   }
 
 });

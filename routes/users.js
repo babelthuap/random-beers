@@ -19,4 +19,8 @@ router.post('/login', function(req, res) {
   });
 });
 
+router.post('/addsampled', User.isAuthenticated, function(req, res) {
+  res.send(req.user);
+});
+
 module.exports = router;

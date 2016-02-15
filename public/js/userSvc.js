@@ -58,4 +58,14 @@ app.service('userSvc', function($http) {
     })
   }
 
+  this.getSampledBeers = function() {
+    return $http({
+      method: 'GET',
+      url: '/users/getsampled',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    })
+  }
+
 });

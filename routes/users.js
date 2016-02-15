@@ -28,4 +28,11 @@ router.post('/addsampled', User.isAuthenticated, function(req, res) {
   })
 });
 
+router.get('/getsampled', User.isAuthenticated, function(req, res) {
+  User.findById(req.user._id, (err, user) => {
+    if (err) return res.status(400).send(err);
+    res.send(user.sampled);
+  })
+});
+
 module.exports = router;

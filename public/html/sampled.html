@@ -1,5 +1,7 @@
 <div class="container">
   <h1>My Sampled Beers</h1>
   <hr>
-  {{beers}}
+  <div ng-repeat="beer in beers track by $index">
+    <beerDirective beer={{beer}} />
+  </div>
 </div>

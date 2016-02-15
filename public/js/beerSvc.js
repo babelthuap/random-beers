@@ -10,7 +10,10 @@ console.log(apiUrl + apiKey);
 app.service('beerSvc', function($http) {
 
   this.getRandomBeer = function() {
-    return $http.get(apiUrl + apiKey)
+    return $http.get('/beer')
+    .then(function(beer) {
+      console.log(beer);
+    })
   }
 
 });
